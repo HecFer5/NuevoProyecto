@@ -4,6 +4,7 @@ import CompShowBlogs from './blog/ShowBlog'
 import CompCreateBlog from './blog/CreateBlogs'
 import CompEditBlog from './blog/EditBlog'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import MenuInicial from './MenuInicial'
 
 
 
@@ -15,7 +16,8 @@ function App() {
      
       <Routes>
         
-        <Route path='/' element={<CompShowBlogs />} />
+        <Route path='/' element={<MenuInicial />} />
+        <Route path='/muestra' element={<CompShowBlogs />} />
         <Route path='/create' element={<CompCreateBlog />} />
         <Route path='/edit/:id' element={<CompEditBlog />} />
       </Routes>

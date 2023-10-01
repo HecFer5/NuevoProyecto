@@ -36,9 +36,9 @@ return(<>
          <table className="table">
             <thead className="table-primary">
                <tr>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Actions</th>
+                  <th>Nombre Común</th>
+                  <th>Nombre Científico</th>
+                  <th>Acciones</th>
                </tr>
             </thead>
             <tbody>
@@ -58,6 +58,7 @@ return(<>
          </table>
       </div>
    </div>
+   <Link to= {`/`} className="btn btn-info"> Volver al principio</Link>
 
 </div>
 </>

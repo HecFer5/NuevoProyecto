@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const URI = 'http://localhost:8000/blogs/'
 
@@ -13,12 +13,12 @@ const CompCreateBlog = () => {
     const store = async (e) => {
         e.preventDefault()
         await axios.post(URI, {title: title, content:content})
-        navigate('/')
+        navigate('/muestra')
     }   
 
     return (
         <div>
-           <h3>Create POST</h3>
+           <h3>Ingresar nuevo registro</h3>
            <form onSubmit={store}>
                 <div className='mb-3'>
                     <label className='form-label'>Title</label>
@@ -40,6 +40,9 @@ const CompCreateBlog = () => {
                  </div>  
                  <button type='submit' className='btn btn-primary'>Store</button>                  
            </form>
+           <hr />
+    <Link to= {'/'} className="btn btn-info"> Volver al principio</Link>
+
         </div>
     )
 }

@@ -1,20 +1,20 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 
 
 const URI = 'http://localhost:8000/blogs/'
 
 const CompEditBlog = () => {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [title, setNombre] = useState('')
+  const [content, setCientifico] = useState('')
   const navigate = useNavigate()
   const {id} = useParams()
 
   const update = async (e) => {
     e.preventDefault()
     await axios.put(URI + id, { title: title, content: content })
-    navigate('/')
+    navigate('/muestra')
   }
 
   useEffect(() => {
@@ -24,8 +24,8 @@ const CompEditBlog = () => {
 
   const getBlogById = async ()=>{
     const res = await axios.get(URI+id)
-    setTitle(res.data.title)
-    setContent(res.data.content)
+    setNombre(res.data.title)
+    setCientifico(res.data.content)
   }
 
   return (
@@ -33,25 +33,28 @@ const CompEditBlog = () => {
     <h3>editar</h3>
     <form onSubmit={update}>
          <div className='mb-3'>
-             <label className='form-label'>Title</label>
+             <label className='form-label'> Nombre común</label>
              <input
                  value={title}
-                 onChange={ (e)=> setTitle(e.target.value)} 
+                 onChange={ (e)=> setNombre(e.target.value)} 
                  type="text"
                  className='form-control'
              />
           </div>   
           <div className='mb-3'>
-              <label className='form-label'>Title</label>
+              <label className='form-label'>Nombre Científico</label>
              <textarea
                  value={content}
-                 onChange={ (e)=> setContent(e.target.value)} 
+                 onChange={ (e)=> setCientifico(e.target.value)} 
                  type="text"
                  className='form-control'
              />                 
           </div>  
           <button type='submit' className='btn btn-primary'>Store</button>                  
     </form>
+    <hr />
+    <Link to= {`/`} className="btn btn-info"> Volver al principio</Link>
+
  </div>
   )
 }
