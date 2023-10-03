@@ -1,9 +1,10 @@
 import React from 'react'
-import { Container, LogoContainer, Menu, MenuItem, MenuItemLink, Wrapper, MobileIcon } from './navbarElements'
+import { Container, LogoContainer, Menu, MenuItem, MenuItemLink, Wrapper, MobileIcon,  } from './navbarElements'
 import { PiFlowerTulipBold } from "react-icons/pi";
 import { IconContext } from 'react-icons'
-import { FaAlignJustify } from "react-icons/fa";
+import { FaAlignJustify, FaFileSignature, FaHouseUser, FaImage, FaTimes } from "react-icons/fa";
 import { useState } from 'react'
+
 const Navbar = () => {
     const [mostrarMenu, setMostrarMenu] = useState(false)
 
@@ -17,22 +18,33 @@ const Navbar = () => {
                         <p>f(x)</p>
                     </LogoContainer>
                     <MobileIcon onClick={() => setMostrarMenu(!mostrarMenu)}>
-                        <FaAlignJustify />
+                        {
+                            mostrarMenu ? <FaTimes/> : <FaAlignJustify/>
+                        }
+                       
                     </MobileIcon>
                     <Menu open={mostrarMenu}>
                         <MenuItem>
-                            <MenuItemLink>
-
+                            <MenuItemLink onClick={() => setMostrarMenu(!mostrarMenu)}>
+                                <div>
+                                    <FaHouseUser />
+                                </div>
                                 HOME
                             </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
                             <MenuItemLink to={"/muestra"}>
+                                <div>
+                                    <FaImage />
+                                </div>
                                 VER TODO
                             </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
                             <MenuItemLink to={'/create'}>
+                                <div>
+                                    <FaFileSignature />
+                                </div>
                                 NUEVO INGRESO
                             </MenuItemLink>
                         </MenuItem>
