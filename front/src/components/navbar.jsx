@@ -3,8 +3,10 @@ import { Container, LogoContainer, Menu, MenuItem, MenuItemLink, Wrapper, Mobile
 import { PiFlowerTulipBold } from "react-icons/pi";
 import { IconContext } from 'react-icons'
 import { FaAlignJustify } from "react-icons/fa";
-
+import { useState } from 'react'
 const Navbar = () => {
+    const [mostrarMenu, setMostrarMenu] = useState(false)
+
     return (
         <Container>
             <Wrapper>
@@ -14,10 +16,10 @@ const Navbar = () => {
                         <p>Vector -</p>
                         <p>f(x)</p>
                     </LogoContainer>
-                    <MobileIcon>
-                        <FaAlignJustify/>
+                    <MobileIcon onClick={() => setMostrarMenu(!mostrarMenu)}>
+                        <FaAlignJustify />
                     </MobileIcon>
-                    <Menu>
+                    <Menu open={mostrarMenu}>
                         <MenuItem>
                             <MenuItemLink>
 

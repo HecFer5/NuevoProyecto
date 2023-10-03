@@ -50,7 +50,7 @@ list-style: none;
 @media screen and (max-width:960px) {
     position: absolute;
     top: 70px;
-    left: 0;
+    left: ${({ open }) => (open ? "0" : "100%")}; 
     width: 100%;
     height: 90vh;
     justify-content: center;
@@ -65,7 +65,14 @@ list-style: none;
 `
 export const MenuItem = styled.li`
 height: 100%;
+height: 70px;
+display: flex;
+justify-content: center;
+align-items: center;
     
+@media screen and (max-width:960px) {
+    width: 100%;
+}
 `
 export const MenuItemLink = styled(Link)`
     display: flex;
@@ -84,6 +91,9 @@ export const MenuItemLink = styled(Link)`
         color: #fff;
         background-color: #e8792a;
         transition: 0.5s all ease;
+    }
+    @media screen and (max-width:960px) {
+        width: 100%;
     }
 `
 
